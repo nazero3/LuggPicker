@@ -1,21 +1,23 @@
-import NextAuth from "next-auth/next"
-import GoogleProvider from "next-auth/providers/google"
-import EmailProvider from "next-auth/providers/email"
-
+import NextAuth from "next-auth";
+import Providers from "next-auth/providers";
+import { connectToDatabase } from "../../../lib/db";
+import { verifyPassword } from "../../auth";
 export default NextAuth({
-    secret: process.env.SECRET,
     providers: [
-      // OAuth authentication providers
-      
-      GoogleProvider({
-        clientId: process.env.GOOGLE_CLIENT_ID,
-        clientSecret: process.env.GOOGLE_CLIENT_SECRET,
-      }),
-      //Sign in with passwordless email link
-      EmailProvider({
-        server: process.env.MAIL_SERVER,
-        from: "<no-reply@example.com>",
-      }),
-    ],
-    secret: process.env.JWT_SECRET
-  })
+        Providers.Credentials({
+            async authorize(credentials){
+                const client = await connectToDatabase();
+
+                const usersCollection = client.db().collections('users');
+                const user = await usersCollection.findOne({email: credentials.email});
+
+                if(!user) {
+                    throw new Error('No user found')
+                }
+                await verifyPassword(credentials.password, user.password);
+
+                client.close();
+            }
+        })
+    ]
+});
