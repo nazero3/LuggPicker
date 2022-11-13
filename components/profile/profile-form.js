@@ -17,3 +17,4 @@ function ProfileForm(){
         </form>
     )
 }
+export default ProfileForm;
