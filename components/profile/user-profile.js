@@ -1,26 +1,26 @@
 import ProfileForm from './profile-form';
 import classes from './user-profile.module.css';
 
-// import { getSession} from "next-auth/client";
-// import { useEffect, useState } from 'react';
+import { getSession} from "next-auth/client";
+import { useEffect, useState } from 'react';
 
 function UserProfile() {
   
-//   const [isLoading, setIsloading]= useState(true);
+  const [isLoading, setIsloading]= useState(true);
 
-//   useEffect(() => {
-//     getSession().then(session =>{
-//         if(!session){
-//             window.location.href = '/auth';
-//         }else{
-//             setIsloading(false);
-//         }
-//     })
-//   },[]);
+  useEffect(() => {
+    getSession().then(session =>{
+        if(!session){
+            window.location.href = '/auth';
+        }else{
+            setIsloading(false);
+        }
+    })
+  },[]);
 
-//   if(isLoading){
-//     return <p className={classes.profile}>Loading ...</p>;
-//   }
+  if(isLoading){
+    return <p className={classes.profile}>Loading ...</p>;
+  }
 
 
   return (

@@ -14,7 +14,7 @@ function MainNavigation() {
   return (
     <header className={classes.header}>
       <Link href="/">
-        <div className={classes.logo}>Next auth</div>
+        <div className={classes.logo}>LuggPicker</div>
       </Link>
       <nav>
         <ul>
@@ -24,17 +24,17 @@ function MainNavigation() {
             </li>
           )}
 
-          {session && (
+          { 
             <li>
               <Link href="/profile">Profile</Link>
             </li>
-          )}
+          }
 
-          {session && (
+          { 
             <li>
               <button onClick={logoutHandler}>Log out</button>
             </li>
-          )}
+          }
         </ul>
       </nav>
     </header>

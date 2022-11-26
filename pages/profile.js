@@ -1,7 +1,7 @@
 import UserProfile from "../components/profile/user-profile";
 import {getSession} from 'next-auth/client';
 function ProfilePage(){
-    return <UserProfile/>
+    return <UserProfile/>;
 }
 
 //this extra function is just for not seeing the loading sign 
@@ -15,12 +15,12 @@ export async function getServerSideProps(context){
                 destination: '/auth',
                 permanent: false,
             },
-        }
+        };
     }
 
     return{
         props: {session},
-    }
+    };
 
 }
 
