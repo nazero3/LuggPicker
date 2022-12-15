@@ -1,6 +1,6 @@
 import Link from 'next/link';
 import { useSession, signOut } from 'next-auth/client';
-
+import { Navbar, Button, Text } from "@nextui-org/react";
 import classes from './main-navigation.module.css';
 
 function MainNavigation() {
@@ -11,6 +11,7 @@ function MainNavigation() {
   }
 
   return (
+    <Navbar>
     <header className={classes.header}>
       <Link href='/'>
         
@@ -37,6 +38,7 @@ function MainNavigation() {
         </ul>
       </nav>
     </header>
+    </Navbar>
   );
 }
 

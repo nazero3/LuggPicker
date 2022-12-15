@@ -9,16 +9,32 @@
     "lint": "next lint"
   },
   "dependencies": {
+    "@nextui-org/react": "^1.0.0-beta.10",
     "bcryptjs": "^2.4.3",
     "mongodb": "^4.11.0",
-    "next": "13.0.0",
+    "next": "^13.0.0",
     "next-auth": "3.29.10",
     "nodemailer": "^6.8.0",
-    "react": "18.2.0",
-    "react-dom": "18.2.0"
+    "react": "^18.2.0",
+    "react-dom": "^18.2.0"
   },
   "devDependencies": {
     "eslint": "8.26.0",
     "eslint-config-next": "13.0.0"
-  }
+  },
+  "description": "This is a [Next.js](https://nextjs.org/) project bootstrapped with [`create-next-app`](https://github.com/vercel/next.js/tree/canary/packages/create-next-app).",
+  "main": "next.config.js",
+  "directories": {
+    "lib": "lib"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/nazero3/auth-app.git"
+  },
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/nazero3/auth-app/issues"
+  },
+  "homepage": "https://github.com/nazero3/auth-app#readme"
 }

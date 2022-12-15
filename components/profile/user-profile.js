@@ -3,6 +3,7 @@ import classes from './user-profile.module.css';
 
 import { getSession} from "next-auth/client";
 import { useEffect, useState } from 'react';
+import { User } from "@nextui-org/react";
 
 function UserProfile() {
   
@@ -25,7 +26,11 @@ function UserProfile() {
 
   return (
     <section className={classes.profile}>
-      <h1>Your User Profile</h1>
+      <User
+      src="https://i.pravatar.cc/150?u=a042581f4e29026704d"
+      name="Ariana Wattson"
+      bordered
+    />
       <ProfileForm />
     </section>
   );
