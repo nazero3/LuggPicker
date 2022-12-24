@@ -35,6 +35,7 @@ function AuthForm() {
     event.preventDefault();
 
     const enteredEmail = emailInputRef.current.value;
+    //dont forget to hash the password here
     const enteredPass = passwordRef.current.value;
 
     if (isLogin) {

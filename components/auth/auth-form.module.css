@@ -48,25 +48,25 @@
     font: inherit;
     color: white;
     background-color: #01435c;
-    border: 1px solid #01435c;
+    border: 1px solid #bbdae5;
     border-radius: 4px;
     padding: 0.5rem 2.5rem;
   }
   
   .actions button:hover {
-    background-color: #01435c;
-    border-color: #5c015b;
+    background-color: #17b8f3;
+    border-color:white;
   }
   
   .actions .toggle {
     margin-top: 1rem;
     background-color: transparent;
-    color: #28e417;
+    color: #eaefea;
     border: none;
     padding: 0.15rem 1.5rem;
   }
   
   .actions .toggle:hover {
     background-color: transparent;
-    color: #01435c;
+    color: #17b8f3;
   }

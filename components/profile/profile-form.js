@@ -1,58 +1,84 @@
+import { React, useState, useRef } from "react";
+
+import Card from "../ui/Card";
 import classes from "./profile-form.module.css";
-import React from "react";
-import {
-  Dropdown,
-  Tooltip,
-  Input,
-  Spacer,
-  Button,
-  Grid,
-} from "@nextui-org/react";
 
-function ProfileForm() {
-  const [selected, setSelected] = React.useState(new Set(["Airport"]));
+function ProfileForm(props) {
+  const [image, setImage] = useState(null);
 
-  const selectedValue = React.useMemo(
-    () => Array.from(selected).join(", ").replaceAll("_", " "),
-    [selected]
-  );
+  const handleFileChange = (event) => {
+    const file = event.target.files[0];
+    setImage(URL.createObjectURL(file));
+  };
+  const titleInputRef = useRef();
+  const imageInputRef = image;
+  const addressInputRef = useRef();
+  const passportInputRef = useRef();
+  const weightInputRef = useRef();
+  const descriptionInputRef = useRef();
+
+  function submitHandler(event) {
+    event.preventDefault();
+
+    const enteredTitle = titleInputRef.current.value;
+    //const enteredImage = imageInputRef.current.value;
+    const enteredAddress = addressInputRef.current.value;
+    const enteredPassport = passportInputRef.current.value;
+    const enteredWeight = weightInputRef.current.value;
+    const enteredDescription = descriptionInputRef.current.value;
+
+    const meetupData = {
+      title: enteredTitle,
+      image: imageInputRef,
+      address: enteredAddress,
+      passport: enteredPassport,
+      weight: enteredWeight,
+      description: enteredDescription,
+    };
+
+    props.onAddMeetup(meetupData);
+  }
+
   return (
-    <form className={classes.form}>
-      <Input clearable bordered labelPlaceholder="Name and Surname" />
-      <Spacer y={2.5} />
-      <Input clearable bordered labelPlaceholder="Passport ID" />
-      <Spacer y={2.5} />
-      <Input clearable bordered labelPlaceholder="Travel Date: DD/MM/YY" />
-      <Spacer y={2.5} />
-      <Input clearable bordered labelPlaceholder="Luaggage Weight (KG)" />
-      <Spacer y={2.5} />
-      
-      <Tooltip content={"choose the airport you need to go to :)"}>
-        <Dropdown>
-          <Dropdown.Button flat color="secondary" css={{ tt: "capitalize" }}>
-            {selectedValue}
-          </Dropdown.Button>
-          <Dropdown.Menu
-            aria-label="Single selection actions"
-            color="secondary"
-            disallowEmptySelection
-            selectionMode="single"
-            selectedKeys={selected}
-            onSelectionChange={setSelected}
-          >
-            <Dropdown.Item></Dropdown.Item>
-            <Dropdown.Item key="Ist">Ist</Dropdown.Item>
-            <Dropdown.Item key="Ank">Ank</Dropdown.Item>
-          </Dropdown.Menu>
-        </Dropdown>
-      </Tooltip>
-      <Spacer y={2.5} />
-      <Grid>
-        <Button shadow color="gradient" auto>
-          Submit
-        </Button>
-      </Grid>
-    </form>
+    <Card>
+      <form className={classes.form} onSubmit={submitHandler}>
+        <div className={classes.control}>
+          <label htmlFor="title">Name and Surname</label>
+          <input type="text" required id="title" ref={titleInputRef} />
+        </div>
+        <div className={classes.control}>
+          <label htmlFor='image'>Luggage Image</label>
+          <input type='file' onChange={handleFileChange}  />
+          {/* {image && <img src={image} alt="Selected Image" />} */}
+        </div>
+        
+        <div className={classes.control}>
+          <label htmlFor="address">Airport Name</label>
+          <input type="text" required id="address" ref={addressInputRef} />
+        </div>
+        <div className={classes.control}>
+          <label htmlFor="passport">Passport id</label>
+          <input type="number" required id="passport" ref={passportInputRef} />
+        </div>
+        <div className={classes.control}>
+          <label htmlFor="weight">Weight KG</label>
+          <input type="number" required id="weight" ref={weightInputRef} />
+        </div>
+        <div className={classes.control}>
+          <label htmlFor="description">Description</label>
+          <textarea
+            id="description"
+            required
+            rows="5"
+            ref={descriptionInputRef}
+          ></textarea>
+        </div>
+        <div className={classes.actions}>
+          <button>Add Meetup</button>
+        </div>
+      </form>
+    </Card>
   );
 }
+
 export default ProfileForm;

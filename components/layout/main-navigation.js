@@ -1,6 +1,6 @@
 import Link from 'next/link';
 import { useSession, signOut } from 'next-auth/client';
-import { Navbar, Button, Text } from "@nextui-org/react";
+//import { Navbar, Button, Text } from "@nextui-org/react";
 import classes from './main-navigation.module.css';
 
 function MainNavigation() {
@@ -11,11 +11,11 @@ function MainNavigation() {
   }
 
   return (
-    <Navbar>
+    
     <header className={classes.header}>
       <Link href='/'>
         
-          <div className={classes.logo}>Next Auth</div>
+          <div className={classes.logo}>LuggPicker</div>
         
       </Link>
       <nav>
@@ -30,15 +30,26 @@ function MainNavigation() {
               <Link href='/profile'>Profile</Link>
             </li>
           )}
+          { session &&(
+            <li>
+              <Link href='/new-luggage'>Add Luggage</Link>
+            </li>
+          )}
+          { session &&(
+            <li>
+              <Link href='/changepassword'>Change Password</Link>
+            </li>
+          )}
           {session && (
             <li>
               <button onClick={logoutHandler}>Logout</button>
             </li>
           )}
+          
         </ul>
       </nav>
     </header>
-    </Navbar>
+    
   );
 }
 
