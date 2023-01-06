@@ -28,7 +28,7 @@ function MainNavigation() {
               <Link href='/auth'>Login</Link>
             </li>
           )}
-          {(
+          {session && (
             <li>
               <Link href='/profile'>Profile</Link>
             </li>
