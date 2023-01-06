@@ -7,10 +7,10 @@ import ProfileForm from '../../components/profile/profile-form'
 function NewLuggPage() {
   const router = useRouter();
 
-  async function addMeetupHandler(enteredMeetupData) {
+  async function addLuggHandler(enteredProfileData) {
     const response = await fetch('/api/user/new-luggage', {
       method: 'POST',
-      body: JSON.stringify(enteredMeetupData),
+      body: JSON.stringify(enteredProfileData),
       headers: {
         'Content-Type': 'application/json',
       },
@@ -18,7 +18,7 @@ function NewLuggPage() {
 
     const data = await response.json();
 
-    console.log(enteredMeetupData);
+    console.log(enteredProfileData);
 
     router.push('/profile');
   }
@@ -32,7 +32,7 @@ function NewLuggPage() {
           content='Add your own meetups and create amazing networking opportunities.'
         />
       </Head> */}
-      <ProfileForm onAddMeetup={addMeetupHandler} />
+      <ProfileForm onAddProfile={addLuggHandler} />
     </Fragment>
   );
 }

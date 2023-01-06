@@ -1,11 +1,13 @@
 import classes from './profile-detail.module.css';
-
+import Image from 'next/image';
 function ProfileDetail(props) {
   return (
     <section className={classes.detail}>
-      <img
+      <Image
         src={props.image}
         alt={props.title}
+        width={300}
+        height={300}
       />
       <h1>{props.title}</h1>
       <address>{props.address}</address>

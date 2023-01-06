@@ -1,8 +1,8 @@
-import UserProfile from "../components/profile/user-profile";
+//import UserProfile from "../components/profile/user-profile";
 import LuggageList from "../components/profile/luggage-list";
-import ProfileForm from "../components/profile/profile-form";
+//import ProfileForm from "../components/profile/profile-form";
 import { connectToDatabase } from "../lib/db";
-import { getSession } from "next-auth/client";
+//import { getSession } from "next-auth/client";
 
 function ProfilePage(props) {
   return (

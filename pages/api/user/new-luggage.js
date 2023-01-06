@@ -1,6 +1,10 @@
 //import { MongoClient } from "mongodb";
 import { getSession } from "next-auth/client";
 import { connectToDatabase } from "../../../lib/db";
+// import nextConnect from "next-connect";
+// import multer from "multer";
+// import MulterGridfsStorage from "multer-gridfs-storage";
+
 
 async function handler(req, res) {
   if (req.method !== "POST") {
