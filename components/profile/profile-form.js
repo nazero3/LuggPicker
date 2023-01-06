@@ -114,7 +114,7 @@ function ProfileForm(props) {
             onChange={handleFileChange}
           />
         
-          <button>Add Meetup</button>
+          <button>Add new luggage</button>
         </div>
         
       </form>
