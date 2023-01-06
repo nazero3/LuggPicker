@@ -10,11 +10,11 @@ async function handler(req, res) {
   if (req.method !== "POST") {
     return;
   }
-    // const session = await getSession({ req: req });
-    // if (!session) {
-    //   res.status(401).json({ message: "Not authenticated!" });
-    //   return;
-    // }
+    const session = await getSession({ req: req });
+    if (!session) {
+      res.status(401).json({ message: "Not asasd" });
+      return;
+    }
 
     const data = req.body;
 
