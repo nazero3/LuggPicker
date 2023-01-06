@@ -18,6 +18,9 @@ function MainNavigation() {
           <div className={classes.logo}>LuggPicker</div>
         
       </Link>
+      {/* <Link href='/tryingImage'>
+        upload Image tings
+      </Link> */}
       <nav>
         <ul>
           {!session && !loading && (
@@ -25,7 +28,7 @@ function MainNavigation() {
               <Link href='/auth'>Login</Link>
             </li>
           )}
-          {session && (
+          {(
             <li>
               <Link href='/profile'>Profile</Link>
             </li>
